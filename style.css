@@ -9,7 +9,7 @@
         body {
             /* СЮДА ВЫ ПОТОМ ПОСТАВИТЕ СВОЮ КАРТИНКУ */
             /* Пример: background-image: url('my-bg.jpg'); background-size: cover; */
-            background-image: url("/home/yaso/Downloads/аниме бляди/anon-вопрос-знатокам-Warcraft-3622608.png");
+            background-image: url("anon-вопрос-знатокам-Warcraft-3622608.png");
             background-position: center;
             min-height: 100vh;
             display: flex;
