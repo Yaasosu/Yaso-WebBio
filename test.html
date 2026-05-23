@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaso-Bio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="98053625.jpg" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* Твое фирменное свечение текста */
+            .text-glow {
+                text-shadow: 0 0 6px rgba(255, 255, 255, 0.2),
+                             0 0 15px rgba(255, 255, 255, 0.08);
+            }
+            /* Многослойная стеклянная тень для карточек */
+            .shadow-glass {
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+                            0 0 0 1px rgba(255, 255, 255, 0.15),
+                            0 0 10px rgba(255, 255, 255, 0.2),
+                            0 0 25px rgba(255, 255, 255, 0.08);
+            }
+            /* Усиленная тень для главной панели */
+            .shadow-panel {
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+                            0 0 0 1px rgba(255, 255, 255, 0.3),
+                            0 0 15px rgba(255, 255, 255, 0.4),
+                            0 0 40px rgba(255, 255, 255, 0.15);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[url('anon-вопрос-знатокам-Warcraft-3622608.png')] bg-center bg-fixed bg-cover min-h-screen flex justify-center items-center text-white antialiased">
+
+    <main class="bg-[#1e1e1e]/45 backdrop-blur-[25px] border border-white/15 border-t-white/30 border-l-white/30 rounded-[24px] p-6 w-[90%] max-w-[750px] shadow-panel max-[500px]:p-[15px] max-[500px]:m-2.5">
+
+        <header class="flex justify-between items-center mb-6 max-[650px]:flex-col max-[650px]:gap-4 max-[650px]:text-center max-[500px]:items-start max-[500px]:text-left">
+
+            <div class="flex items-center gap-4">
+                <img src="98053625.jpg" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-white/20 bg-gradient-to-br from-[#a18cd1] to-[#fbc2eb] shadow-glass">
+
+                <div class="text-white/75 text-glow">
+                    <h1 class="text-xl font-semibold mb-0.5">Yaso_Su</h1>
+                    <span class="text-xs">full-stack beginner</span>
+                </div>
+            </div>
+
+            <div class="flex gap-2.5">
+                <a href="https://t.me/Andrey_Yasso" class="flex justify-center items-center w-9 h-9 rounded-xl bg-white/10 text-white border border-white/5 shadow-glass transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://github.com/Yaasosu" class="flex justify-center items-center w-9 h-9 rounded-xl bg-white/10 text-white border border-white/5 shadow-glass transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="flex gap-8 items-start flex-wrap justify-between">
+
+            <section class="flex-1 min-w-[200px] mt-6 text-white/75 text-glow max-[650px]:text-center max-[650px]:w-full max-[650px]:mb-1.5">
+                <h2 class="text-2xl font-bold mb-1">Andrey Yaso</h2>
+                <span class="text-sm block">NTU "KhPI" software engineer</span>
+                <span class="text-sm block mb-5">Full-stack beginner</span>
+
+                <div class="text-sm text-white/75 leading-relaxed max-w-[330px] max-[650px]:mx-auto flex flex-col gap-2">
+                    <p>Currently expanding my full-stack skillset with FastAPI and React.</p>
+                    <p>Outside of web development, I love experimenting with Linux and building custom tools.</p>
+                </div>
+            </section>
+
+            <div class="flex-1 min-w-[280px] grid grid-cols-2 gap-4 text-white/75 max-[500px]:grid-cols-1 max-[500px]:px-2.5">
+
+                <div class="bg-[#282828]/30 border border-white/5 shadow-glass rounded-2xl p-4 flex flex-col gap-4 min-h-[120px]">
+                    <div class="bg-white/5 border border-white/15 rounded-xl p-2 text-center text-sm font-medium text-glow">Language</div>
+                    <div class="text-xs text-center text-white/90 text-glow leading-relaxed">
+                        <p>Russia - native Ukranian - native English - B1</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#282828]/30 border border-white/5 shadow-glass rounded-2xl p-4 flex flex-col gap-4 min-h-[120px]">
+                    <div class="bg-white/5 border border-white/15 rounded-xl p-2 text-center text-sm font-medium text-glow">PL</div>
+                    <div class="text-xs text-center text-white/90 text-glow leading-relaxed">
+                        <p>Python<br>Java-Script<br>C/C++</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#282828]/30 border border-white/5 shadow-glass rounded-2xl p-4 flex flex-col gap-4 min-h-[120px]">
+                    <div class="bg-white/5 border border-white/15 rounded-xl p-2 text-center text-sm font-medium text-glow">Linux</div>
+                    <div class="text-xs text-center text-white/90 text-glow leading-relaxed">
+                        <p><a title="BTW" class="hover:underline cursor-help">Arch</a>, Gentoo<br>WM ricing</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#282828]/30 border border-white/5 shadow-glass rounded-2xl p-4 flex flex-col gap-4 min-h-[120px]">
+                    <div class="bg-white/5 border border-white/15 rounded-xl p-2 text-center text-sm font-medium text-glow">Math</div>
+                    <div class="text-xs text-center text-white/90 text-glow leading-relaxed">
+                        <p>Calculus<br>Linear Algebra</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
