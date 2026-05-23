@@ -7,10 +7,10 @@
         }
 
         body {
-            /* СЮДА ВЫ ПОТОМ ПОСТАВИТЕ СВОЮ КАРТИНКУ */
-            /* Пример: background-image: url('my-bg.jpg'); background-size: cover; */
             background-image: url("anon-вопрос-знатокам-Warcraft-3622608.png");
             background-position: center;
+            background-attachment: fixed; 
+            background-size: cover;       /* Растягиваем на весь экран без искажений */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -29,10 +29,11 @@
             border-radius: 24px;
             padding: 24px;
             width: 90%;
-            max-width: 650px;
+            max-width: 750px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
-                        0 0 0 1px rgba(218, 216, 216, 0.493),
-                        0 0 20px rgba(255, 255, 255, 0.08);
+                0 0 0 1px rgba(255, 255, 255, 0.3),
+                0 0 15px rgba(255, 255, 255, 0.4),
+                0 0 40px rgba(255, 255, 255, 0.15);
         }
 
         /* Шапка профиля */
@@ -55,6 +56,10 @@
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgba(255, 255, 255, 0.15),
+            0 0 10px rgba(255, 255, 255, 0.2),
+            0 0 25px rgba(255, 255, 255, 0.08);
             /* Временный фон для аватара */
             background: linear-gradient(45deg, #a18cd1, #fbc2eb); 
         }
@@ -68,6 +73,7 @@
         .user-details span {
             font-size: 13px;
             color: rgba(255, 255, 255, 0.7);
+            
         }
 
         /* Кнопки соцсетей в шапке */
@@ -86,8 +92,13 @@
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.15),
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 25px rgba(255, 255, 255, 0.08);
             transition: all 0.2s ease;
+            
         }
 
         .social-btn:hover {
@@ -105,7 +116,11 @@
         /* Внутренние стеклянные карточки */
         .inner-card {
             background: rgba(40, 40, 40, 0.3);
-            border: 1px solid rgba(218, 216, 216, 0.493);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.15),
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 25px rgba(255, 255, 255, 0.08);   /* 4. Еле заметный дальний шлейф */
             border-radius: 16px;
             padding: 16px;
             display: flex;
@@ -123,6 +138,8 @@
             text-align: center;
             font-size: 14px;
             font-weight: 500;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.2),
+             0 0 15px rgba(255, 255, 255, 0.08);
         }
 
         /* Текст внутри карточек */
@@ -130,6 +147,8 @@
             font-size: 13px;
             text-align: center;
             color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.2),
+             0 0 15px rgba(255, 255, 255, 0.08);
             line-height: 1.6;
         }
 
@@ -138,7 +157,6 @@
         }
 
         .card-content a {
-            color: #c77dff; /* Фиолетовый цвет ссылок как на фото */
             text-decoration: none;
         }
 
@@ -155,21 +173,26 @@
     margin-left: 0;
 }
 
-        /* Адаптивность для телефонов */
-        @media (max-width: 500px) {
-            .grid-container {
-                grid-template-columns: 1fr; /* На телефоне карточки будут в один столбик */
-            }
-            .profile-header {
-                flex-direction: column;
-                gap: 16px;
-                align-items: flex-start;
-            }
-        }
-        @media (max-width: 650px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Карточки в один столбик */
+@media (max-width: 500px) {
+        body {
+        padding: 10px; /* вместо margin на main-panel */
     }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        padding: 0 10px; /* ← добавь это */
+    }
+    .profile-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+    .main-panel {
+        padding: 15px;
+        margin: 10px;
+    }
+}
+        @media (max-width: 650px) {
     .profile-header {
         flex-direction: column;
         gap: 16px;
@@ -181,10 +204,15 @@
     .about-section {
         text-align: center;
         width: 100%;
-        margin-bottom: 24px; /* Отступ вниз, чтобы текст не прилипал к карточкам */
+        margin-bottom: 6px; /* Отступ вниз, чтобы текст не прилипал к карточкам */
     }
     .about-desc {
         margin-left: auto;
         margin-right: auto; /* margin auto выравнивает блок по центру */
     }
+
+
+
+
+    
 }
