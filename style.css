@@ -5,18 +5,114 @@
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
+            
+.changewallpaper {
+    position: fixed;
+    top: 20px;
+    right: -50px;
 
-        body {
-            background-image: url("anon-вопрос-знатокам-Warcraft-3622608.png");
-            background-position: center;
-            background-attachment: fixed; 
-            background-size: cover;       /* Растягиваем на весь экран без искажений */
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-        }
+    width: 30%;
+    max-width: 70px;
+    padding: 6px;
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 0 10px rgba(255, 255, 255, 0.2),
+        0 0 25px rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.82);
+
+    text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.2),
+        0 0 15px rgba(255, 255, 255, 0.08);
+
+    cursor: pointer;
+    overflow: hidden;
+
+    transition:
+        right 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    font-size: 28px;
+}
+
+.changewallpaper:hover {
+    right: 10px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    transform: translateY(-2px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 0 12px rgba(255, 255, 255, 0.28),
+        0 0 30px rgba(255, 255, 255, 0.12);
+}
+
+.changewallpaper:active {
+    transform: scale(0.97);
+}
+
+.changewallpaper::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(
+        circle,
+        rgba(120, 220, 255, 0.28),
+        rgba(170, 120, 255, 0.12) 35%,
+        transparent 65%
+    );
+    opacity: 0;
+    transform: scale(0.6);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.changewallpaper:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    
+    background-color: #121212; 
+}
+
+.bg, .bg-next {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-next {
+    clip-path: circle(0% at 50% 50%);
+    -webkit-clip-path: circle(0% at 50% 50%);
+}
 
         /* Главная стеклянная панель */
         .main-panel {
@@ -173,6 +269,52 @@
     margin-left: 0;
 }
 
+#copyToast {
+    /* --- ПОЗИЦИОНИРОВАНИЕ И ФИКС БЛЮРА --- */
+    position: absolute; /* Отсчитывает от нового контейнера .profile-wrapper */
+    z-index: -1; /* Ставим -1, чтобы при выезде плашка красиво выплывала ИЗ-ПОД основной карточки */
+    left: 50%;
+    /* translateZ(0) заставляет браузер включить блюр даже рядом с другими блюрами */
+    transform: translateX(-50%) translateZ(0); 
+    
+    /* --- СКРЫТОЕ СОСТОЯНИЕ --- */
+    bottom: 20px; /* Спрятано выше нижнего края карточки */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+    
+    /* --- ВНУТРЕННЕЕ ВЫРАВНИВАНИЕ --- */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+    padding: 10px 18px;
+    
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 0 10px rgba(255, 255, 255, 0.2),
+        0 0 25px rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.82);
+    text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.2),
+        0 0 15px rgba(255, 255, 255, 0.08);
+        transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1), visibility 0s linear 0.4s;
+}
+
+#copyToast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: -70px; 
+    transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1), visibility 0s linear 0s;
+}
+
 @media (max-width: 500px) {
         body {
         padding: 10px; /* вместо margin на main-panel */
@@ -191,28 +333,62 @@
         padding: 15px;
         margin: 10px;
     }
+    #copyToast {
+        bottom: 10px; /* скрытое состояние */
+    }
+
+    #copyToast.show {
+        z-index: 1;
+        bottom: 615px; /* видимое состояние */
+    }
 }
         @media (max-width: 650px) {
     .profile-header {
         flex-direction: column;
         gap: 16px;
-        align-items: center; /* Центрируем шапку с аватаркой */
+        align-items: center; 
         text-align: center;
     }
     
-    /* === НОВЫЕ ПРАВИЛА ДЛЯ ЦЕНТРОВКИ ТЕКСТА === */
     .about-section {
         text-align: center;
         width: 100%;
-        margin-bottom: 6px; /* Отступ вниз, чтобы текст не прилипал к карточкам */
+        margin-bottom: 6px; 
     }
     .about-desc {
         margin-left: auto;
-        margin-right: auto; /* margin auto выравнивает блок по центру */
+        margin-right: auto; 
     }
 
+    .changewallpaper {
+        position: fixed;
+        top: auto;          /* Отменяем десктопный top */
+        bottom: 30px;       /* Жестко фиксируем внизу экрана */
+        right: 10px;        /* Вытаскиваем из-за края (никаких минусовых значений) */
+        
+        width: 52px;
+        height: 52px;
+        max-width: none;    /* Сбрасываем десктопный max-width */
+        
+        border-radius: 50%; /* Делаем идеальный круг */
+        padding: 0;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        z-index: 9999;      /* Вытаскиваем на самый верхний слой */
+    }
 
+    /* Отключаем десктопный выезд вбок, так как кнопка уже всегда на виду */
+    .changewallpaper:hover {
+        right: 30px; 
+        transform: none;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); /* Статичная тень */
+    }
 
-
-    
+    /* Анимация "вдавливания" при тапе пальцем */
+    .changewallpaper:active {
+        transform: scale(0.92);
+    }
 }
