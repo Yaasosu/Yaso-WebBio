@@ -362,33 +362,42 @@ body {
 
     .changewallpaper {
         position: fixed;
-        top: auto;          /* Отменяем десктопный top */
-        bottom: 30px;       /* Жестко фиксируем внизу экрана */
-        right: 10px;        /* Вытаскиваем из-за края (никаких минусовых значений) */
+        top: auto;
+        bottom: 30px;
+        right: 10px;
         
         width: 52px;
         height: 52px;
-        max-width: none;    /* Сбрасываем десктопный max-width */
+        max-width: none;
         
-        border-radius: 50%; /* Делаем идеальный круг */
+        border-radius: 50%;
         padding: 0;
         
         display: flex;
         justify-content: center;
         align-items: center;
         
-        z-index: 9999;      /* Вытаскиваем на самый верхний слой */
+        z-index: 9999;
+        
+        /* Убираем стандартный квадратный блик при тапе на Android/iOS */
+        -webkit-tap-highlight-color: transparent; 
     }
 
-    /* Отключаем десктопный выезд вбок, так как кнопка уже всегда на виду */
+    /* Сбрасываем "залипающий" hover до базовых значений, чтобы кнопка не светилась после тапа */
     .changewallpaper:hover {
-        right: 30px; 
+        right: 10px;
         transform: none;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); /* Статичная тень */
+        background: rgba(255, 255, 255, 0.08); /* Возвращаем стандартный фон */
+        box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgba(255, 255, 255, 0.15),
+            0 0 10px rgba(255, 255, 255, 0.2),
+            0 0 25px rgba(255, 255, 255, 0.08); /* Возвращаем стандартную тень */
     }
 
-    /* Анимация "вдавливания" при тапе пальцем */
+    /* Оставляем только анимацию вдавливания в момент самого касания */
     .changewallpaper:active {
         transform: scale(0.92);
+        background: rgba(255, 255, 255, 0.12); /* Чуть подсвечиваем только пока палец на экране */
     }
 }
