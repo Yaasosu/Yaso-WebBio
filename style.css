@@ -115,22 +115,23 @@ body {
 }
 
         /* Главная стеклянная панель */
-        .main-panel {
-            background: rgba(30, 30, 30, 0.45);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            border-left: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 24px;
-            padding: 24px;
-            width: 90%;
-            max-width: 750px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(255, 255, 255, 0.3),
-                0 0 15px rgba(255, 255, 255, 0.4),
-                0 0 40px rgba(255, 255, 255, 0.15);
-        }
+.main-panel {
+    background: rgba(30, 30, 30, 0.45);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    padding: 24px;
+    width: 90%;
+    max-width: 750px;
+    margin: 0 auto; /* <-- ДОБАВЬТЕ ЭТУ СТРОКУ */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.3),
+        0 0 15px rgba(255, 255, 255, 0.4),
+        0 0 40px rgba(255, 255, 255, 0.15);
+}
 
         /* Шапка профиля */
         .profile-header {
@@ -331,7 +332,7 @@ body {
     }
     .main-panel {
         padding: 15px;
-        margin: 10px;
+        margin: 10px auto
     }
     #copyToast {
         z-index: 999;
@@ -375,7 +376,7 @@ body {
         position: fixed;
         top: auto;
         bottom: 30px;
-        right: 10px;
+        right: 20px;
         
         width: 52px;
         height: 52px;
