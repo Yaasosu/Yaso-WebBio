@@ -46,12 +46,17 @@
     font-size: 28px;
 }
 
+.content-wrapper {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .changewallpaper:hover {
     right: 15px;
 
     background: rgba(255, 255, 255, 0.12);
-
-    transform: translateY(-2px);
 
     border: 1px solid rgba(255, 255, 255, 0.15);
 
@@ -261,8 +266,9 @@ body {
             text-decoration: underline;
         }
 
-        .about-section {
+.about-section {
     text-align: left;
+    margin-bottom: 40px;
 }
 
 .about-desc {
@@ -271,8 +277,7 @@ body {
 }
 
 #copyToast {
-    /* --- ПОЗИЦИОНИРОВАНИЕ И ФИКС БЛЮРА --- */
-    position: absolute; /* Отсчитывает от нового контейнера .profile-wrapper */
+    position: absolute; 
     z-index: -1; /* Ставим -1, чтобы при выезде плашка красиво выплывала ИЗ-ПОД основной карточки */
     left: 50%;
     /* translateZ(0) заставляет браузер включить блюр даже рядом с другими блюрами */
@@ -316,45 +321,7 @@ body {
     transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1), visibility 0s linear 0s;
 }
 
-@media (max-width: 500px) {
-        body {
-        padding: 10px; /* вместо margin на main-panel */
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-        padding: 0 10px; /* ← добавь это */
-    }
-    .profile-header {
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-    }
-    .main-panel {
-        padding: 15px;
-        margin: 10px auto
-    }
-    #copyToast {
-        z-index: 999;
-        bottom: 580px;
-        
-        opacity: 0;
-        visibility: hidden;
-        
-        transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1), visibility 0s linear 0.4s;
-    }
-
-    #copyToast.show {
-        z-index: 999;
-        bottom: 630px;
-        
-        opacity: 1;
-        visibility: visible;
-        
-        transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1), visibility 0s linear 0s;
-    }
-}
-        @media (max-width: 650px) {
+@media (max-width: 650px) {
     .profile-header {
         flex-direction: column;
         gap: 16px;
@@ -362,54 +329,93 @@ body {
         text-align: center;
     }
     
-    .about-section {
-        text-align: center;
-        width: 100%;
-        margin-bottom: 6px; 
-    }
-    .about-desc {
-        margin-left: auto;
-        margin-right: auto; 
-    }
-
     .changewallpaper {
         position: fixed;
         top: auto;
         bottom: 30px;
         right: 20px;
-        
         width: 52px;
         height: 52px;
         max-width: none;
-        
         border-radius: 50%;
         padding: 0;
-        
         display: flex;
         justify-content: center;
         align-items: center;
-        
         z-index: 9999;
-        
-        /* Убираем стандартный квадратный блик при тапе на Android/iOS */
         -webkit-tap-highlight-color: transparent; 
     }
 
-    /* Сбрасываем "залипающий" hover до базовых значений, чтобы кнопка не светилась после тапа */
     .changewallpaper:hover {
         right: 10px;
         transform: none;
-        background: rgba(255, 255, 255, 0.08); /* Возвращаем стандартный фон */
-        box-shadow:
-            0 15px 35px rgba(0, 0, 0, 0.2),
-            0 0 0 1px rgba(255, 255, 255, 0.15),
-            0 0 10px rgba(255, 255, 255, 0.2),
-            0 0 25px rgba(255, 255, 255, 0.08); /* Возвращаем стандартную тень */
+        background: rgba(255, 255, 255, 0.08); 
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 10px rgba(255, 255, 255, 0.2), 0 0 25px rgba(255, 255, 255, 0.08); 
     }
 
-    /* Оставляем только анимацию вдавливания в момент самого касания */
     .changewallpaper:active {
         transform: scale(0.92);
-        background: rgba(255, 255, 255, 0.12); /* Чуть подсвечиваем только пока палец на экране */
+        background: rgba(255, 255, 255, 0.12); 
+    }
+}
+
+/* 2. Брейкпоинт 580px: ИДЕАЛЬНЫЙ ВИД (всё по центру, сетка 2x2) */
+@media (max-width: 580px) {
+    .content-wrapper {
+        flex-direction: column; /* Ставит текст НАД карточками */
+        align-items: center;
+    }
+    
+    .about-section {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 24px; 
+    }
+
+    .about-desc {
+        margin-left: auto;
+        margin-right: auto; 
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Жёстко держим 2 колонки */
+        width: 100%;
+    }
+    #copyToast.show {
+        visibility: visible;
+        opacity: 1;
+        bottom: -10px; 
+        z-index: 999;
+        transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1), visibility 0s linear 0s;
+    }
+
+}
+
+/* 3. Брейкпоинт 500px: МОБИЛЬНЫЙ ВИД (1 колонка) */
+@media (max-width: 500px) {
+    body {
+        padding: 10px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr; /* Схлопываем в 1 колонку */
+        padding: 0 10px; 
+    }
+
+    #copyToast {
+        z-index: 999;
+        bottom: 580px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1), visibility 0s linear 0.4s;
+    }
+
+    #copyToast.show {
+        z-index: 999;
+        bottom: 340px; /* Взял из твоего кода */
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.4s ease, bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1), visibility 0s linear 0s;
     }
 }
